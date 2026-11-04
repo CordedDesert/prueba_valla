@@ -1,0 +1,6 @@
+{
+  "name": "Editorial Yucateco",
+  "description": "LIAH Valladolid · Terrenos campestres de preservación patrimonial en el corazón de la selva yucateca.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
