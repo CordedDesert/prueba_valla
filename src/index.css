@@ -5413,3 +5413,311 @@ body { overscroll-behavior-y: none; }
     top: 122px;
   }
 }
+
+/* Marca tipográfica: LIAH es el gesto principal, Valladolid funciona como firma. */
+.brand {
+  gap: 0;
+  min-width: 126px;
+}
+
+.brand-copy {
+  align-items: center;
+  line-height: .9;
+}
+
+.brand-copy strong {
+  color: #d7c48f;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: .34em;
+  margin-right: -.34em;
+  text-shadow: 0 0 24px rgba(215,196,143,.14);
+}
+
+.brand-copy small {
+  color: rgba(244,240,230,.86);
+  font-size: 6px;
+  font-weight: 600;
+  letter-spacing: .34em;
+  margin: 8px -.34em 0 0;
+}
+
+/* El nuevo KMZ incorpora referencias del corredor; aparecen al alejar el mapa. */
+.nearby-location-marker {
+  cursor: pointer;
+  filter: drop-shadow(0 5px 9px rgba(2,10,6,.48));
+}
+
+.nearby-location-tooltip.leaflet-tooltip {
+  backdrop-filter: blur(14px);
+  background: rgba(8,21,13,.88);
+  border: 1px solid rgba(215,196,143,.42);
+  border-radius: 0;
+  box-shadow: 0 12px 28px rgba(2,10,6,.28);
+  color: #f4f0e6;
+  font-size: 7px;
+  font-weight: 650;
+  letter-spacing: .1em;
+  padding: 7px 9px;
+  text-transform: uppercase;
+}
+
+.nearby-location-tooltip.leaflet-tooltip-top::before {
+  border-top-color: rgba(215,196,143,.72);
+}
+
+.nearby-location-tooltip.is-regional {
+  color: rgba(244,240,230,.78);
+}
+
+/* Ficha cartográfica: vidrio oscuro, compacta y completamente legible. */
+.parcel-side-panel {
+  backdrop-filter: blur(28px) saturate(118%);
+  background:
+    linear-gradient(145deg, rgba(16,35,23,.9), rgba(5,16,9,.82)),
+    rgba(8,21,13,.86);
+  border: 1px solid rgba(215,196,143,.28);
+  border-left: 1px solid rgba(215,196,143,.28);
+  border-top: 2px solid #d7c48f;
+  box-shadow: 0 26px 90px rgba(2,10,6,.44);
+  color: #f4f0e6;
+  padding: 17px 19px 16px;
+  scrollbar-color: rgba(215,196,143,.48) transparent;
+  width: min(388px, calc(100vw - 96px));
+}
+
+.parcel-panel-head {
+  border-bottom-color: rgba(244,240,230,.16);
+  padding-bottom: 11px;
+}
+
+.parcel-panel-head p {
+  color: #d7c48f;
+  font-size: 7px;
+}
+
+.parcel-panel-head span {
+  color: rgba(244,240,230,.52);
+  font-size: 6px;
+  margin-top: 5px;
+}
+
+.parcel-panel-head button {
+  border-color: rgba(244,240,230,.22);
+  color: #f4f0e6;
+  height: 31px;
+  width: 31px;
+}
+
+.parcel-panel-head button:hover {
+  background: #d7c48f;
+  border-color: #d7c48f;
+  color: #102017;
+}
+
+.parcel-panel-title {
+  margin: 13px 0 12px;
+}
+
+.parcel-panel-title > div > span {
+  color: #d7c48f;
+  font-size: 7px;
+  margin-bottom: 5px;
+}
+
+.parcel-panel-title h3 {
+  color: #f4f0e6;
+  font-size: clamp(40px, 3.25vw, 49px);
+  line-height: .9;
+}
+
+.parcel-side-panel .parcel-sale-badge {
+  border-color: rgba(225,182,157,.58);
+  color: #f0c8b0;
+}
+
+.parcel-summary-grid {
+  border-bottom-color: rgba(244,240,230,.15);
+  border-top-color: rgba(244,240,230,.15);
+}
+
+.parcel-summary-grid > div { padding: 10px 9px 10px 0; }
+.parcel-summary-grid > div + div {
+  border-left-color: rgba(244,240,230,.12);
+  padding-left: 10px;
+}
+
+.parcel-summary-grid dt,
+.parcel-payment-breakdown dt {
+  color: rgba(244,240,230,.48);
+  font-size: 6px;
+  margin-bottom: 6px;
+}
+
+.parcel-summary-grid dd {
+  color: #f4f0e6;
+  font-size: 16px;
+}
+
+.parcel-summary-grid dd small {
+  color: rgba(244,240,230,.54);
+  font-size: 7px;
+}
+
+.parcel-finance-card { margin-top: 14px; }
+
+.parcel-price-block > span,
+.parcel-monthly-highlight > span {
+  color: rgba(244,240,230,.54);
+  font-size: 7px;
+}
+
+.parcel-price-block > strong {
+  color: #f4f0e6;
+  font-size: clamp(31px, 2.5vw, 38px);
+  margin: 6px 0 5px;
+}
+
+.parcel-price-block > small {
+  color: rgba(244,240,230,.42);
+  font-size: 6px;
+}
+
+.parcel-plan-tabs {
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.parcel-plan-tabs button {
+  background: rgba(244,240,230,.035);
+  border-color: rgba(244,240,230,.18);
+  color: rgba(244,240,230,.8);
+  min-height: 59px;
+  padding: 9px 10px;
+}
+
+.parcel-plan-tabs button span {
+  color: #d7c48f;
+  font-size: 7px;
+}
+
+.parcel-plan-tabs button strong { font-size: 10px; }
+.parcel-plan-tabs button small {
+  color: rgba(244,240,230,.46);
+  font-size: 6px;
+}
+
+.parcel-plan-tabs button.is-active {
+  background: rgba(215,196,143,.16);
+  border-color: rgba(215,196,143,.72);
+  color: #f4f0e6;
+}
+
+.parcel-plan-tabs button.is-active span { color: #ead794; }
+.parcel-plan-tabs button.is-active small { color: rgba(244,240,230,.62); }
+
+.parcel-monthly-highlight {
+  background: linear-gradient(125deg, rgba(215,196,143,.18), rgba(215,196,143,.06));
+  border-left: 2px solid #d7c48f;
+  margin-top: 8px;
+  padding: 12px 14px 11px;
+}
+
+.parcel-monthly-highlight > span { color: rgba(244,240,230,.64); }
+.parcel-monthly-highlight > strong {
+  color: #ead794;
+  font-size: clamp(29px, 2.3vw, 36px);
+  margin: 5px 0 4px;
+}
+
+.parcel-monthly-highlight > small {
+  color: rgba(244,240,230,.58);
+  font-size: 7px;
+}
+
+.parcel-payment-breakdown > div {
+  background: rgba(244,240,230,.035);
+  border-bottom-color: rgba(244,240,230,.12);
+  padding: 9px 11px;
+}
+
+.parcel-payment-breakdown > div + div {
+  border-left-color: rgba(244,240,230,.12);
+}
+
+.parcel-payment-breakdown dd {
+  color: #f4f0e6;
+  font-size: 15px;
+}
+
+.parcel-panel-sold {
+  background: rgba(155,96,73,.16);
+  border-left-color: #ca8f6c;
+  color: #f4f0e6;
+}
+
+.parcel-panel-sold p { color: rgba(244,240,230,.62); }
+
+.parcel-panel-actions {
+  border-top-color: rgba(244,240,230,.15);
+  margin-top: 12px;
+  padding-top: 11px;
+}
+
+.parcel-panel-actions > small {
+  color: rgba(244,240,230,.42);
+  font-size: 6px;
+}
+
+.parcel-panel-actions > a {
+  border-bottom-color: rgba(215,196,143,.72);
+  color: #ead794;
+  font-size: 7px;
+  margin-top: 8px;
+  padding: 8px 0;
+}
+
+@media (min-width: 901px) {
+  .map-view-tabs,
+  .map-toolbox {
+    top: max(76px, 8.2vh);
+  }
+
+  .parcel-side-panel {
+    bottom: 24px;
+    top: max(124px, 13.2vh);
+  }
+}
+
+@media (max-width: 900px) {
+  .brand { min-width: 112px; }
+  .brand-copy strong { font-size: 22px; }
+
+  .parcel-side-panel {
+    background: rgba(8,21,13,.91);
+    padding: 16px 17px;
+    width: min(374px, calc(100vw - 72px));
+  }
+}
+
+@media (max-width: 640px) {
+  .brand { min-width: 100px; }
+  .brand-copy strong { font-size: 20px; }
+  .brand-copy small { font-size: 5px; margin-top: 6px; }
+
+  .parcel-side-panel {
+    bottom: 52px;
+    left: 10px;
+    max-height: min(66dvh, 580px);
+    padding: 15px;
+    right: 10px;
+    top: auto;
+    width: auto;
+  }
+
+  .parcel-panel-title h3 { font-size: 35px; }
+  .parcel-summary-grid dd { font-size: 14px; }
+  .parcel-price-block > strong { font-size: 28px; }
+  .parcel-monthly-highlight > strong { font-size: 28px; }
+  .parcel-payment-breakdown dd { font-size: 13px; }
+}

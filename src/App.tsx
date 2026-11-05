@@ -22,6 +22,7 @@ import {motion, useReducedMotion, useScroll, useSpring} from 'motion/react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {LOT_PRICING} from './data/lotPricing';
+import {PROJECT_LOCATIONS} from './data/projectLocations';
 import {PROJECT_PARCELS, type ProjectParcel} from './data/projectParcels';
 
 const NAV_ITEMS = [
@@ -273,6 +274,31 @@ function ProjectMap({activeParcel, onSelect}: {activeParcel: string; onSelect: (
         }),
       }).addTo(map);
       parcelLabelsRef.current[parcel.id] = numberLabel;
+    });
+
+    PROJECT_LOCATIONS.forEach((location) => {
+      const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${location.coordinates[0]}%2C${location.coordinates[1]}`;
+      const marker = L.circleMarker(location.coordinates, {
+        className: `nearby-location-marker is-${location.scope}`,
+        color: '#fff7d8',
+        fillColor: '#d7c48f',
+        fillOpacity: 1,
+        radius: location.scope === 'nearby' ? 6 : 5,
+        weight: 2,
+      })
+        .bindTooltip(location.label, {
+          className: `nearby-location-tooltip is-${location.scope}`,
+          direction: 'top',
+          offset: [0, -7],
+          permanent: location.scope === 'nearby',
+        })
+        .on('click', () => {
+          const popup = window.open(mapsUrl, '_blank', 'noopener,noreferrer');
+          if (popup) popup.opener = null;
+        })
+        .addTo(map);
+
+      marker.getElement()?.setAttribute('aria-label', `Abrir ${location.label} en Google Maps`);
     });
 
     map.fitBounds(PROJECT_BOUNDS, {padding: [28, 28]});
@@ -599,24 +625,12 @@ function ProjectMap({activeParcel, onSelect}: {activeParcel: string; onSelect: (
   );
 }
 
-function BrandMark({className = 'brand-mark'}: {className?: string}) {
-  return (
-    <svg className={className} viewBox="0 0 48 48" aria-hidden="true">
-      <circle className="brand-frame" cx="24" cy="24" r="20.25" />
-      <path className="brand-portal" d="M14.5 35.5V21.25C14.5 14.35 18.75 9 24 9s9.5 5.35 9.5 12.25V35.5" />
-      <circle className="brand-sun" cx="24" cy="19.25" r="2.25" />
-      <path className="brand-horizon" d="M15.5 28.5c3.1-2.15 5.9-3.2 8.5-3.2s5.4 1.05 8.5 3.2M15.5 33.25c2.8-1.35 5.65-2.05 8.5-2.05s5.7.7 8.5 2.05M18 37.25h12" />
-    </svg>
-  );
-}
-
 function Brand() {
   return (
     <a className="brand" href="#inicio" aria-label="LIAH Valladolid, ir al inicio">
-      <BrandMark />
       <span className="brand-copy">
         <strong>LIAH</strong>
-        <small>Valladolid · Yucatán</small>
+        <small>Valladolid</small>
       </span>
     </a>
   );
@@ -843,9 +857,8 @@ export default function App() {
 
       <div className={`scene-curtain transition-${sceneTransition} ${sceneChanging ? 'is-active' : ''}`} aria-hidden="true">
         <div className="scene-transition-brand">
-          <BrandMark className="scene-logo-mark" />
           <span>LIAH</span>
-          <small>Valladolid · Yucatán</small>
+          <small>Valladolid</small>
         </div>
       </div>
 
