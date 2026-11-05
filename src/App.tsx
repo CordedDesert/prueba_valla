@@ -298,17 +298,46 @@ function ProjectMap({activeParcel, onSelect}: {activeParcel: string; onSelect: (
       setMapMessage('No fue posible obtener tu ubicación. Revisa los permisos del navegador.');
     });
 
-    const resizeObserver = new ResizeObserver(() => map.invalidateSize({pan: false}));
+    const refreshMapLayout = (refit = false) => {
+      window.requestAnimationFrame(() => {
+        map.invalidateSize({pan: false});
+        if (refit && activeParcelRef.current === 'general') {
+          map.fitBounds(PROJECT_BOUNDS, {padding: [34, 34]});
+          setCurrentZoom(map.getZoom());
+        }
+      });
+    };
+
+    const resizeObserver = new ResizeObserver(() => refreshMapLayout());
     resizeObserver.observe(containerRef.current);
-    const settleTimer = window.setTimeout(() => {
-      map.invalidateSize({pan: false});
-      map.fitBounds(PROJECT_BOUNDS, {padding: [28, 28]});
-      setCurrentZoom(map.getZoom());
-    }, 160);
+
+    const masterplanSection = shellRef.current?.closest('.masterplan-section');
+    const sceneObserver = new MutationObserver(() => {
+      if (!masterplanSection?.classList.contains('is-active')) return;
+      refreshMapLayout(true);
+      window.setTimeout(() => refreshMapLayout(true), 420);
+    });
+    if (masterplanSection) sceneObserver.observe(masterplanSection, {attributes: true, attributeFilter: ['class']});
+
+    const handleWindowResize = () => refreshMapLayout();
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') refreshMapLayout();
+    };
+    window.addEventListener('resize', handleWindowResize, {passive: true});
+    window.addEventListener('orientationchange', handleWindowResize);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    const settleTimers = [120, 520, 1050].map((delay) => (
+      window.setTimeout(() => refreshMapLayout(true), delay)
+    ));
 
     return () => {
-      window.clearTimeout(settleTimer);
+      settleTimers.forEach((timer) => window.clearTimeout(timer));
       resizeObserver.disconnect();
+      sceneObserver.disconnect();
+      window.removeEventListener('resize', handleWindowResize);
+      window.removeEventListener('orientationchange', handleWindowResize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       locationMarkerRef.current?.remove();
       map.remove();
       mapRef.current = null;
@@ -395,14 +424,7 @@ function ProjectMap({activeParcel, onSelect}: {activeParcel: string; onSelect: (
     } else {
       const layer = parcelLayersRef.current[activeParcel];
       if (layer) {
-        const compactLayout = window.matchMedia('(max-width: 640px)').matches;
-        const panelOffset = Math.min(440, map.getSize().x * 0.36);
         layer.bringToFront();
-        map.fitBounds(layer.getBounds(), {
-          maxZoom: mapView === 'satellite' ? 18 : 19,
-          paddingTopLeft: compactLayout ? [36, 92] : [panelOffset, 92],
-          paddingBottomRight: compactLayout ? [36, 330] : [72, 72],
-        });
       }
     }
   }, [activeParcel, mapView]);

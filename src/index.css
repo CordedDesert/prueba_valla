@@ -5297,3 +5297,41 @@ body { overscroll-behavior-y: none; }
   .parcel-monthly-highlight > strong { font-size: 35px; }
   .parcel-payment-breakdown dd { font-size: 15px; }
 }
+
+/* Estabilización del masterplan en despliegues estáticos y navegadores móviles. */
+.masterplan-section {
+  height: 100dvh;
+  max-height: 100dvh;
+  min-height: 100dvh;
+}
+
+.masterplan-section .masterplan-frame,
+.masterplan-section .project-map-shell,
+.masterplan-section .project-map {
+  height: 100%;
+  min-height: 0;
+}
+
+.parcel-side-panel {
+  bottom: 24px;
+  max-height: none;
+  top: max(154px, 18vh);
+  width: min(420px, calc(100vw - 108px));
+}
+
+@media (max-width: 900px) {
+  .parcel-side-panel {
+    bottom: 22px;
+    top: 140px;
+    width: min(400px, calc(100vw - 82px));
+  }
+}
+
+@media (max-width: 640px) {
+  .parcel-side-panel {
+    bottom: 54px;
+    max-height: min(64dvh, 600px);
+    top: auto;
+    width: auto;
+  }
+}
