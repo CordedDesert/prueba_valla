@@ -1006,7 +1006,7 @@ export default function App() {
         <div className="potential-heading reveal">
           <p className="eyebrow">Potencial</p>
           <h2 id="potential-title"><span>Terreno para</span><em>un proyecto propio.</em></h2>
-          <p>Una escala flexible para imaginar hospitalidad, comercio o una residencia vinculada al paisaje.</p>
+          <p>Una escala flexible para imaginar un proyecto turístico, comercial o residencial vinculado al paisaje.</p>
         </div>
 
         <figure className="potential-visual reveal">
@@ -1018,8 +1018,8 @@ export default function App() {
         <div className="potential-use-notes">
           <article>
             <span>01</span>
-            <h3>Hospitalidad</h3>
-            <p>Un hotel boutique o experiencia de estancia vinculada con el paisaje regional.</p>
+            <h3>Turístico</h3>
+            <p>Hospedaje, experiencias y servicios vinculados con el corredor turístico regional.</p>
           </article>
           <article>
             <span>02</span>

@@ -5327,6 +5327,61 @@ body { overscroll-behavior-y: none; }
   }
 }
 
+/* Potencial: usos más visibles y con una escala editorial más generosa. */
+.potential-use-notes {
+  bottom: 84px;
+  gap: clamp(16px, 2vw, 34px);
+}
+
+.potential-use-notes article {
+  background: linear-gradient(180deg, rgba(8,17,11,.18), rgba(8,17,11,.74));
+  min-height: 152px;
+  padding: 24px 24px 21px;
+}
+
+.potential-use-notes article > span { font-size: 7px; }
+
+.potential-use-notes h3 {
+  font-size: clamp(28px, 2.25vw, 39px);
+  margin: 11px 0 9px;
+}
+
+.potential-use-notes p {
+  font-size: 10px;
+  line-height: 1.55;
+  max-width: 350px;
+}
+
+@media (max-width: 1000px) {
+  .potential-use-notes {
+    bottom: 68px;
+    gap: 8px;
+  }
+  .potential-use-notes article {
+    min-height: 105px;
+    padding: 15px 14px 13px;
+  }
+  .potential-use-notes h3 {
+    font-size: clamp(19px, 2.6vw, 25px);
+    margin: 7px 0 5px;
+  }
+  .potential-use-notes p {
+    display: block;
+    font-size: 8px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 680px) {
+  .potential-use-notes article {
+    min-height: 74px;
+    padding: 10px 8px 9px;
+  }
+  .potential-use-notes article > span { font-size: 5px; }
+  .potential-use-notes h3 { font-size: 16px; margin-top: 5px; }
+  .potential-use-notes p { display: none; }
+}
+
 @media (max-width: 640px) {
   .parcel-side-panel {
     bottom: 54px;
