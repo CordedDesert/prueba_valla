@@ -5390,3 +5390,26 @@ body { overscroll-behavior-y: none; }
     width: auto;
   }
 }
+
+/* Masterplan: controles y ficha ligeramente más altos para aprovechar la pantalla. */
+@media (min-width: 901px) {
+  .map-view-tabs,
+  .map-toolbox {
+    top: max(78px, 8.5vh);
+  }
+
+  .parcel-side-panel {
+    bottom: 26px;
+    top: max(126px, 13.5vh);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .map-view-tabs { top: 72px; }
+  .map-toolbox { top: 124px; }
+
+  .parcel-side-panel {
+    bottom: 22px;
+    top: 122px;
+  }
+}

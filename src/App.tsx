@@ -84,6 +84,7 @@ const LOCATION_STORIES = [
 ] as const;
 
 const GOOGLE_MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=20.6708204526%2C-88.2481880729';
+const WHATSAPP_URL = 'https://wa.me/15557239897';
 
 const PROJECT_BOUNDS: L.LatLngBoundsExpression = [
   [20.66857724917716, -88.25145348732555],
@@ -568,7 +569,7 @@ function ProjectMap({activeParcel, onSelect}: {activeParcel: string; onSelect: (
             <small>Datos tomados de la lista de precios proporcionada. Disponibilidad y vigencia se confirman con un asesor.</small>
             {!selectedParcel.sold && (
               <a
-                href={`https://wa.me/529858562210?text=${encodeURIComponent(`Hola, me interesa la ${getParcelDisplayLabel(selectedParcel)} de ${AREA_EXACT_FORMATTER.format(selectedArea)} m². Quisiera confirmar disponibilidad y la cotización de ${CURRENCY_EXACT_FORMATTER.format(referenceTotal)}.`)}`}
+                href={`${WHATSAPP_URL}?text=${encodeURIComponent(`Hola, me interesa la ${getParcelDisplayLabel(selectedParcel)} de ${AREA_EXACT_FORMATTER.format(selectedArea)} m². Quisiera confirmar disponibilidad y la cotización de ${CURRENCY_EXACT_FORMATTER.format(referenceTotal)}.`)}`}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -1052,7 +1053,7 @@ export default function App() {
           <h2><span>La conversación</span><em>empieza aquí.</em></h2>
           <a
             className="whatsapp-button"
-            href="https://wa.me/529858562210?text=Hola%2C%20me%20interesa%20recibir%20informaci%C3%B3n%20sobre%20los%20macrolotes%20LIAH%20en%20Valladolid."
+            href={`${WHATSAPP_URL}?text=Hola%2C%20me%20interesa%20recibir%20informaci%C3%B3n%20sobre%20los%20macrolotes%20LIAH%20en%20Valladolid.`}
             target="_blank"
             rel="noreferrer"
           >
